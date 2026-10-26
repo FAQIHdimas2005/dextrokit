@@ -172,7 +172,7 @@ export function ToolsExplorer({
                 No matching tools yet
               </h3>
               <p className="mt-2 max-w-sm text-sm leading-6 text-zinc-500">
-                Try a different keyword, or bring back the full OmniTools
+                Try a different keyword, or bring back the full DextroKit
                 collection.
               </p>
               <button

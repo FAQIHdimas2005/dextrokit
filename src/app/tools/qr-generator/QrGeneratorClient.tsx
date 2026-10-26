@@ -184,8 +184,8 @@ export function QrGeneratorClient() {
   const [customizerTab, setCustomizerTab] = useState<CustomizerTab>("style");
 
   // Form Content Fields
-  const [urlInput, setUrlInput] = useState<string>("https://omnitools.app");
-  const [textInput, setTextInput] = useState<string>("Hello from OmniTools!");
+  const [urlInput, setUrlInput] = useState<string>("https://dextrokit.app");
+  const [textInput, setTextInput] = useState<string>("Hello from DextroKit!");
   const [wifiSsid, setWifiSsid] = useState<string>("");
   const [wifiPassword, setWifiPassword] = useState<string>("");
   const [wifiEncryption, setWifiEncryption] = useState<string>("WPA");
@@ -266,10 +266,10 @@ export function QrGeneratorClient() {
   const getPayload = (): string => {
     switch (contentType) {
       case "url":
-        return sanitizeUrlPayload(urlInput).value || "https://omnitools.app";
+        return sanitizeUrlPayload(urlInput).value || "https://dextrokit.app";
       case "text": {
-        if (hasDangerousScheme(textInput)) return "OmniTools";
-        return sanitizeTextPayload(textInput).value || "OmniTools";
+        if (hasDangerousScheme(textInput)) return "DextroKit";
+        return sanitizeTextPayload(textInput).value || "DextroKit";
       }
       case "wifi": {
         const encryption = ["WPA", "WEP", "nopass"].includes(wifiEncryption)
@@ -645,7 +645,7 @@ export function QrGeneratorClient() {
       if (!blob) throw new Error("Couldn't generate the PNG file.");
       const url = URL.createObjectURL(blob);
       const link = document.createElement("a");
-      link.download = `omnitools-qrcode-${Date.now()}.png`;
+      link.download = `dextrokit-qrcode-${Date.now()}.png`;
       link.href = url;
       link.click();
       URL.revokeObjectURL(url);
@@ -665,7 +665,7 @@ export function QrGeneratorClient() {
       if (!blob) throw new Error("Couldn't generate the WebP file.");
       const url = URL.createObjectURL(blob);
       const link = document.createElement("a");
-      link.download = `omnitools-qrcode-${Date.now()}.webp`;
+      link.download = `dextrokit-qrcode-${Date.now()}.webp`;
       link.href = url;
       link.click();
       URL.revokeObjectURL(url);
@@ -698,7 +698,7 @@ export function QrGeneratorClient() {
         new Blob([svgText], { type: "image/svg+xml;charset=utf-8" }),
       );
       const link = document.createElement("a");
-      link.download = `omnitools-qrcode-${Date.now()}.svg`;
+      link.download = `dextrokit-qrcode-${Date.now()}.svg`;
       link.href = url;
       link.click();
       URL.revokeObjectURL(url);
@@ -1621,7 +1621,7 @@ export function QrGeneratorClient() {
                 How to design a custom QR code for your brand
               </h2>
               <p className="mt-3 text-sm leading-relaxed text-zinc-400 sm:text-base">
-                QR codes don&apos;t have to look generic. With OmniTools&apos; aesthetic QR generator, you can tune
+                QR codes don&apos;t have to look generic. With DextroKit&apos; aesthetic QR generator, you can tune
                 every graphic detail to match your brand identity without sacrificing scanability. Every code
                 is rendered locally in your browser — nothing is uploaded, and no tracking redirect sits
                 between the scan and your destination:

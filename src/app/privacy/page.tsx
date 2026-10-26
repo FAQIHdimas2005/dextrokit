@@ -4,7 +4,7 @@ import { LegalPage } from "@/components/LegalPage";
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description:
-    "How OmniTools processes your files locally in the browser, what we never collect, and the limited role of third-party services.",
+    "How DextroKit processes your files locally in the browser, what we never collect, and the limited role of third-party services.",
   alternates: { canonical: "/privacy" },
 };
 
@@ -13,14 +13,14 @@ export default function PrivacyPage() {
     <LegalPage
       badge="Privacy policy"
       title="Your privacy isn't an add-on. It's the foundation."
-      description="OmniTools is built on a zero-server-storage principle. This page explains what we never collect, how local processing works, and the narrow role of third-party services."
+      description="DextroKit is built on a zero-server-storage principle. This page explains what we never collect, how local processing works, and the narrow role of third-party services."
       updatedAt="October 22, 2026"
       sections={[
         {
           heading: "1. How your files are processed",
           paragraphs: [
-            "Every file you select is processed with the APIs and memory of your own device. For browser-based tools, files are not transmitted, uploaded, or stored on OmniTools servers.",
-            "When you close the tab or browser, the file data held in session memory is released according to your device's normal behavior. OmniTools keeps no copy of your files, no converted output, and no usage history.",
+            "Every file you select is processed with the APIs and memory of your own device. For browser-based tools, files are not transmitted, uploaded, or stored on DextroKit servers.",
+            "When you close the tab or browser, the file data held in session memory is released according to your device's normal behavior. DextroKit keeps no copy of your files, no converted output, and no usage history.",
             "The LaMa AI Inpainting engine is the single exception, and it is described in section 3 below.",
           ],
         },
@@ -59,7 +59,7 @@ export default function PrivacyPage() {
         {
           heading: "6. Children's privacy",
           paragraphs: [
-            "OmniTools is not directed specifically at children and does not knowingly collect personal data from children. Every tool can be used without creating an account or providing personal information.",
+            "DextroKit is not directed specifically at children and does not knowingly collect personal data from children. Every tool can be used without creating an account or providing personal information.",
           ],
         },
         {

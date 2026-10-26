@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "/tools/pdf-tools" },
   openGraph: {
-    title: "PDF Merger & Image to PDF Converter — OmniTools",
+    title: "PDF Merger & Image to PDF Converter — DextroKit",
     description:
       "Combine PDFs or convert photos into a single PDF directly in your browser, free and completely private.",
     type: "website",

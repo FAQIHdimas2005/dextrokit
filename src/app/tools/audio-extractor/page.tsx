@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "/tools/audio-extractor" },
   openGraph: {
-    title: "Video to Audio Extractor (MP3 / WAV) — OmniTools",
+    title: "Video to Audio Extractor (MP3 / WAV) — DextroKit",
     description:
       "Pull crisp MP3 or lossless WAV audio out of any video, straight from browser memory. Free and private.",
     type: "website",

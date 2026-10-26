@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 const siteTitle =
-  "OmniTools — Free Online Image Converter, Background Remover & PDF Tools";
+  "DextroKit — Free Online Image Converter, Background Remover & PDF Tools";
 const siteDescription =
   "Free online tools to convert images, remove backgrounds, compress video, extract audio, merge PDFs, and design QR codes. Everything runs in your browser — 100% client-side privacy, no uploads, no server storage.";
 
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
     default: `${siteTitle} — 100% Private`,
-    template: "%s — OmniTools",
+    template: "%s — DextroKit",
   },
   description: siteDescription,
   applicationName: siteConfig.name,
@@ -94,7 +94,7 @@ export const metadata: Metadata = {
     description:
       "Convert, compress, and edit files right in your browser. Free, fast, and 100% private — your files never leave your device.",
     images: ["/og-image.png"],
-    creator: "@omnitools",
+    creator: "@dextrokit",
   },
   other: {
     "format-detection": "telephone=no",
@@ -139,7 +139,7 @@ const structuredData = {
       name: siteConfig.name,
       url: siteConfig.url,
       description:
-        "OmniTools builds free, privacy-first web utilities that process files entirely in the browser.",
+        "DextroKit builds free, privacy-first web utilities that process files entirely in the browser.",
     },
     {
       "@type": "WebApplication",

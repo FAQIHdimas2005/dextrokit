@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "/tools/background-remover" },
   openGraph: {
-    title: "AI Background Remover — OmniTools",
+    title: "AI Background Remover — DextroKit",
     description:
       "Cut out any subject with AI that runs in your browser. Free, unlimited, and fully private.",
     type: "website",

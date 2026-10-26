@@ -35,8 +35,8 @@ import {
 
 const FAQ_ITEMS = [
   {
-    q: "How does OmniTools compress video without a server?",
-    a: "OmniTools runs a WebAssembly build of FFmpeg, the world's leading video processing software, compiled to run directly inside your browser. When you pick a compression preset, your browser executes the H.264 or VP9 encoding algorithms in your device's memory, so no data is ever sent to a server.",
+    q: "How does DextroKit compress video without a server?",
+    a: "DextroKit runs a WebAssembly build of FFmpeg, the world's leading video processing software, compiled to run directly inside your browser. When you pick a compression preset, your browser executes the H.264 or VP9 encoding algorithms in your device's memory, so no data is ever sent to a server.",
   },
   {
     q: "How much smaller will my video be?",
@@ -619,7 +619,7 @@ export function VideoConverterClient() {
               </h2>
               <p className="mt-3 text-sm leading-relaxed text-zinc-400 sm:text-base">
                 Phone cameras now record at very high bitrates, so a single file often reaches
-                hundreds of megabytes. OmniTools Video Converter &amp; Compressor helps you shrink video
+                hundreds of megabytes. DextroKit Video Converter &amp; Compressor helps you shrink video
                 size quickly while keeping the picture sharp:
               </p>
 
@@ -664,7 +664,7 @@ export function VideoConverterClient() {
                 </h3>
                 <p>
                   Many web video converters require cross-origin isolation headers (COOP/COEP), which break
-                  third-party scripts. At OmniTools, we use a modern single-thread FFmpeg WASM architecture
+                  third-party scripts. At DextroKit, we use a modern single-thread FFmpeg WASM architecture
                   that runs smoothly in every browser without disrupting your browsing experience.
                 </p>
                 <p>

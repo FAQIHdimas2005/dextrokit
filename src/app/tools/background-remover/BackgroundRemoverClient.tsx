@@ -37,11 +37,11 @@ const COLOR_PRESETS = [
 const FAQ_ITEMS = [
   {
     q: "How does the AI background remover work in this browser?",
-    a: "OmniTools runs a lightweight deep learning model optimized for WebAssembly and WebGL. The model downloads once into your browser cache, then analyzes the image and cuts out the subject — a person, pet, or product — pixel by pixel, entirely in your device's memory.",
+    a: "DextroKit runs a lightweight deep learning model optimized for WebAssembly and WebGL. The model downloads once into your browser cache, then analyzes the image and cuts out the subject — a person, pet, or product — pixel by pixel, entirely in your device's memory.",
   },
   {
     q: "Are my passport or ID card photos safe?",
-    a: "Yes — 100%. Unlike sites that upload your photo to a cloud server, OmniTools never sends your photo off your computer or phone. Personal, family, and official-document photos stay completely private.",
+    a: "Yes — 100%. Unlike sites that upload your photo to a cloud server, DextroKit never sends your photo off your computer or phone. Personal, family, and official-document photos stay completely private.",
   },
   {
     q: "Can I change the background color for a passport photo (red or blue)?",
@@ -164,7 +164,7 @@ export function BackgroundRemoverClient() {
     if (bgColor === "transparent" && resultBlob) {
       const a = document.createElement("a");
       a.href = resultImageUrl;
-      a.download = `omnitools-transparent-${selectedFile.name.replace(/\.[^/.]+$/, "")}.png`;
+      a.download = `dextrokit-transparent-${selectedFile.name.replace(/\.[^/.]+$/, "")}.png`;
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
@@ -193,7 +193,7 @@ export function BackgroundRemoverClient() {
         const url = URL.createObjectURL(blob);
         const a = document.createElement("a");
         a.href = url;
-        a.download = `omnitools-bg-${selectedFile.name.replace(/\.[^/.]+$/, "")}.png`;
+        a.download = `dextrokit-bg-${selectedFile.name.replace(/\.[^/.]+$/, "")}.png`;
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
@@ -523,7 +523,7 @@ export function BackgroundRemoverClient() {
               <p className="mt-3 text-sm leading-relaxed text-zinc-400 sm:text-base">
                 Cutting the background out of product photos for your online store, making WhatsApp stickers,
                 or changing the background color on a job-application photo no longer takes Photoshop skills.
-                OmniTools AI Background Remover works in 3 instant steps:
+                DextroKit AI Background Remover works in 3 instant steps:
               </p>
 
               <div className="mt-8 grid gap-4 sm:grid-cols-3">

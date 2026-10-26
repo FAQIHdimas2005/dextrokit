@@ -98,7 +98,7 @@ export function LegalPage({
             <div className="mt-14 overflow-hidden rounded-2xl border border-emerald-300/10 bg-[linear-gradient(130deg,rgba(52,211,153,0.06),rgba(255,255,255,0.018))] p-5 sm:p-6">
               <p className="flex items-center gap-2 text-xs font-semibold text-emerald-200">
                 <ShieldCheck className="size-4" aria-hidden="true" />
-                The OmniTools principle
+                The DextroKit principle
               </p>
               <p className="mt-2 text-[13px] leading-6 text-zinc-500">
                 Files aren&apos;t retained on our servers. Browser tools process

@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "/tools/image-watermark-remover" },
   openGraph: {
-    title: "AI Image Watermark Remover — OmniTools",
+    title: "AI Image Watermark Remover — DextroKit",
     description:
       "Paint over the logo or text you want gone and let the LaMa inpainting model rebuild a clean, natural image.",
     type: "website",

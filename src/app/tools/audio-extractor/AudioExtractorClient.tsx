@@ -32,8 +32,8 @@ import { validateUploadSize } from "@/lib/limits";
 
 const FAQ_ITEMS = [
   {
-    q: "Why is audio extraction in OmniTools so fast (just 1–2 seconds)?",
-    a: "OmniTools pairs the browser's native Web Audio API with a pure JavaScript LAME MP3 encoder. Instead of uploading a multi-megabyte video to a sluggish cloud server, your device's CPU splits the audio waveform instantly in local RAM.",
+    q: "Why is audio extraction in DextroKit so fast (just 1–2 seconds)?",
+    a: "DextroKit pairs the browser's native Web Audio API with a pure JavaScript LAME MP3 encoder. Instead of uploading a multi-megabyte video to a sluggish cloud server, your device's CPU splits the audio waveform instantly in local RAM.",
   },
   {
     q: "What's the difference between MP3 and WAV?",
@@ -507,7 +507,7 @@ export function AudioExtractorClient() {
               <p className="mt-3 text-sm leading-relaxed text-zinc-400 sm:text-base">
                 Often you only need the background music, voiceover, podcast, or speech from a YouTube
                 video, TikTok clip, or camera recording — without keeping the video file that eats up
-                storage. Here&apos;s how to do it in OmniTools:
+                storage. Here&apos;s how to do it in DextroKit:
               </p>
 
               <div className="mt-8 grid gap-4 sm:grid-cols-3">
@@ -555,7 +555,7 @@ export function AudioExtractorClient() {
                   downloading the audio you wanted all along.
                 </p>
                 <p>
-                  With OmniTools, that 100 MB video <strong className="text-white">never leaves your device</strong>.
+                  With DextroKit, that 100 MB video <strong className="text-white">never leaves your device</strong>.
                   The Web Audio API engine in your browser reads the audio track directly from the local file and
                   extracts it in under 2 seconds. There&apos;s no upload queue and no cap on how many videos you
                   process. Choose MP3 for everyday listening and sharing, or WAV when you plan to edit, mix, or

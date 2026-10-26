@@ -55,7 +55,7 @@ export function Footer() {
             <Link
               href="/"
               className="inline-flex items-center gap-2.5 rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400/60"
-              aria-label="OmniTools — back to home"
+              aria-label="DextroKit — back to home"
             >
               <span className="flex size-9 items-center justify-center rounded-xl bg-gradient-to-br from-emerald-300 via-emerald-400 to-indigo-400">
                 <Layers
@@ -131,7 +131,7 @@ export function Footer() {
 
         <div className="flex flex-col gap-3 border-t border-white/[0.055] pt-6 text-[11px] text-zinc-600 sm:flex-row sm:items-center sm:justify-between">
           <p>
-            © {currentYear} OmniTools. All rights reserved.
+            © {currentYear} DextroKit. All rights reserved.
           </p>
           <p className="flex items-center gap-2">
             <span className="relative flex size-1.5">

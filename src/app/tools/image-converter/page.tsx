@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "/tools/image-converter" },
   openGraph: {
-    title: "Free Image Converter — JPG, PNG, WebP & HEIC — OmniTools",
+    title: "Free Image Converter — JPG, PNG, WebP & HEIC — DextroKit",
     description:
       "Batch-convert photos and graphics at native speed without uploading them to a server.",
     type: "website",

@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "/tools/video-watermark-remover" },
   openGraph: {
-    title: "Video Watermark Blur & Censor — OmniTools",
+    title: "Video Watermark Blur & Censor — DextroKit",
     description:
       "Draw a box over any logo and blur or remove it instantly, right in your browser.",
     type: "website",

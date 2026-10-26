@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "/tools/qr-generator" },
   openGraph: {
-    title: "Custom QR Code Generator — OmniTools",
+    title: "Custom QR Code Generator — DextroKit",
     description:
       "Create branded, high-resolution QR codes for websites, Wi-Fi, and contacts, rendered entirely in your browser.",
     type: "website",

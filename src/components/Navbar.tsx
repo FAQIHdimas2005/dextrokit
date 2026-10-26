@@ -25,7 +25,7 @@ export function Navbar() {
         <Link
           href="/"
           className="group flex shrink-0 items-center gap-3 rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400/60"
-          aria-label="OmniTools — back to home"
+          aria-label="DextroKit — back to home"
         >
           <span className="relative flex size-10 items-center justify-center rounded-xl bg-gradient-to-br from-emerald-300 via-emerald-400 to-indigo-400 shadow-[0_10px_30px_-12px_rgba(52,211,153,0.75)] transition-transform duration-300 group-hover:scale-105">
             <Layers

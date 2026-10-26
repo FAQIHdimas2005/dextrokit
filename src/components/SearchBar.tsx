@@ -54,7 +54,7 @@ export function SearchBar({
       />
       <div className="relative flex items-center rounded-2xl border border-white/10 bg-[#080d16]/95 shadow-[0_24px_70px_-35px_rgba(0,0,0,0.95)] backdrop-blur-xl transition-shadow duration-300 group-focus-within:shadow-[0_24px_80px_-32px_rgba(52,211,153,0.28)]">
         <label htmlFor={inputId} className="sr-only">
-          Search OmniTools tools
+          Search DextroKit tools
         </label>
         <Search
           className="ml-4 size-5 shrink-0 text-zinc-500 transition-colors group-focus-within:text-emerald-300 sm:ml-5"

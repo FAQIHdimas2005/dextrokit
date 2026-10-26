@@ -44,7 +44,7 @@ interface Stroke {
 const FAQ_ITEMS = [
   {
     q: "How does the AI watermark remover actually work?",
-    a: "OmniTools runs a deep-learning inpainting model called LaMa (Large Mask Inpainting) built on Fast Fourier Convolutions. Instead of blurring over the mark like older tools, LaMa is trained to rebuild real texture — individual hairs, fabric weave, light reflections — right where the watermark used to be. You paint the area in your browser; only that image and its mask are sent to OmniTools' inpainting endpoint for the AI pass.",
+    a: "DextroKit runs a deep-learning inpainting model called LaMa (Large Mask Inpainting) built on Fast Fourier Convolutions. Instead of blurring over the mark like older tools, LaMa is trained to rebuild real texture — individual hairs, fabric weave, light reflections — right where the watermark used to be. You paint the area in your browser; only that image and its mask are sent to DextroKit' inpainting endpoint for the AI pass.",
   },
   {
     q: "Does the result keep full resolution and stay sharp?",
@@ -461,7 +461,7 @@ export function ImageWatermarkRemoverClient() {
               <p>
                 <strong className="font-semibold text-indigo-200">How your image is handled:</strong>{" "}
                 brush strokes and previews stay in your browser. When you run the AI pass, the marked
-                image and its mask are sent to OmniTools&apos; own inpainting endpoint, processed
+                image and its mask are sent to DextroKit&apos; own inpainting endpoint, processed
                 once, and deleted immediately. Nothing is stored or shared. If an image can&apos;t
                 leave your device, don&apos;t use this tool.
               </p>
@@ -737,7 +737,7 @@ export function ImageWatermarkRemoverClient() {
 
                         <a
                           href={resultImageUrl}
-                          download={`omnitools-clean-${selectedFile.name.replace(/\.[^/.]+$/, "")}.png`}
+                          download={`dextrokit-clean-${selectedFile.name.replace(/\.[^/.]+$/, "")}.png`}
                           className="inline-flex items-center gap-2 rounded-xl bg-emerald-400 px-5 py-2.5 text-xs font-semibold text-slate-950 shadow-lg shadow-emerald-400/25 transition-all hover:bg-emerald-300"
                         >
                           <Download className="size-4" />
@@ -775,7 +775,7 @@ export function ImageWatermarkRemoverClient() {
               </h2>
               <p className="mt-3 text-sm leading-relaxed text-zinc-400 sm:text-base">
                 Found a great photo, only to have it spoiled by a camera date stamp, a promo logo in
-                the corner, or some stray text? OmniTools Image Watermark Remover helps you clean it
+                the corner, or some stray text? DextroKit Image Watermark Remover helps you clean it
                 up in three easy steps:
               </p>
 
@@ -827,7 +827,7 @@ export function ImageWatermarkRemoverClient() {
                   plausible texture in their place.
                 </p>
                 <p>
-                  With <strong className="text-white">OmniTools</strong>, the brush, mask, undo, and
+                  With <strong className="text-white">DextroKit</strong>, the brush, mask, undo, and
                   before/after comparison all run in an HTML5 Canvas inside your browser, so nothing
                   leaves your device until you press Remove Watermark Now. When you press it, only
                   the marked image and its mask go to our LaMa inpainting endpoint, which

@@ -36,7 +36,7 @@ import {
 const FAQ_ITEMS = [
   {
     q: "How does in-browser video watermark removal work?",
-    a: "When you position the selection box over a logo, OmniTools translates those preview coordinates into the source video's pixel grid (X, Y, width, and height). FFmpeg WebAssembly then applies the Delogo or Box Blur filter to that region on every frame. The file is read directly from browser memory, so burned-in marks can be masked without an upload. MP4, MKV, MOV, WebM, and AVI inputs are supported, and the export is an MP4.",
+    a: "When you position the selection box over a logo, DextroKit translates those preview coordinates into the source video's pixel grid (X, Y, width, and height). FFmpeg WebAssembly then applies the Delogo or Box Blur filter to that region on every frame. The file is read directly from browser memory, so burned-in marks can be masked without an upload. MP4, MKV, MOV, WebM, and AVI inputs are supported, and the export is an MP4.",
   },
   {
     q: "What is the difference between Delogo and Box Blur?",

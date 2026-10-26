@@ -53,7 +53,7 @@ interface ImageQueueFile {
 
 const FAQ_ITEMS = [
   {
-    q: "Are my confidential PDFs and personal photos really safe on OmniTools?",
+    q: "Are my confidential PDFs and personal photos really safe on DextroKit?",
     a: "Yes, completely. Nothing you add is uploaded to our servers. Merging PDFs and converting photos to PDF run entirely inside your browser's memory with JavaScript and WebAssembly, so there is no server copy to leak. Close the tab and no trace of your files remains.",
   },
   {
@@ -62,11 +62,11 @@ const FAQ_ITEMS = [
   },
   {
     q: "Is there a limit on how many files I can merge at once?",
-    a: "No. Everything runs on your laptop's or phone's own RAM, so OmniTools sets no daily quota and no server-side size cap. Merge dozens of documents or photos at once, free, forever.",
+    a: "No. Everything runs on your laptop's or phone's own RAM, so DextroKit sets no daily quota and no server-side size cap. Merge dozens of documents or photos at once, free, forever.",
   },
   {
     q: "Can I turn HEIC photos from my iPhone into a PDF?",
-    a: "Yes. OmniTools ships with a built-in HEIC decoder. Add iPhone camera files (.heic) to the queue alongside JPG or PNG photos and they are converted into your PDF automatically.",
+    a: "Yes. DextroKit ships with a built-in HEIC decoder. Add iPhone camera files (.heic) to the queue alongside JPG or PNG photos and they are converted into your PDF automatically.",
   },
 ];
 
@@ -318,7 +318,7 @@ export function PdfToolsClient() {
       let outputFileName = "";
 
       if (activeTab === "merge") {
-        outputFileName = `omnitools-merged-${Date.now()}.pdf`;
+        outputFileName = `dextrokit-merged-${Date.now()}.pdf`;
         finalBlob = await mergePdfFiles(
           pdfQueue.map((item) => item.file),
           (progress, status) => {
@@ -327,7 +327,7 @@ export function PdfToolsClient() {
           }
         );
       } else {
-        outputFileName = `omnitools-images-${Date.now()}.pdf`;
+        outputFileName = `dextrokit-images-${Date.now()}.pdf`;
         finalBlob = await convertImagesToPdf(
           imageQueue.map((item) => item.file),
           { orientation, margin },
@@ -743,7 +743,7 @@ export function PdfToolsClient() {
                 How to Merge PDFs &amp; Convert Images to PDF
               </h2>
               <p className="mt-3 text-sm leading-relaxed text-zinc-400 sm:text-base">
-                The OmniTools PDF Suite makes quick work of reports, contracts, class assignments,
+                The DextroKit PDF Suite makes quick work of reports, contracts, class assignments,
                 and official forms — producing clean, standard PDF files without another monthly subscription.
               </p>
 
@@ -788,7 +788,7 @@ export function PdfToolsClient() {
                 </h3>
                 <p>
                   Combining financial reports, copies of your ID, pay stubs, signed contracts, or medical
-                  records on an unfamiliar third-party site can put that data at risk. At OmniTools, every
+                  records on an unfamiliar third-party site can put that data at risk. At DextroKit, every
                   page is rendered by pdf-lib, a client-side JavaScript engine that runs in isolation on your
                   own device — so there is no upload step and nothing to leak.
                 </p>

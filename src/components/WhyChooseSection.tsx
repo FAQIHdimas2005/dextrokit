@@ -30,7 +30,7 @@ const reasons = [
     number: "03",
     title: "No Quotas, Ever",
     description:
-      "No server-side file size caps, no hidden subscriptions, and no forced watermarks. If your browser can handle it, OmniTools can too.",
+      "No server-side file size caps, no hidden subscriptions, and no forced watermarks. If your browser can handle it, DextroKit can too.",
     icon: Infinity,
     tag: "Free forever",
     accent: "text-amber-300",
@@ -56,7 +56,7 @@ export function WhyChooseSection() {
             id="why-title"
             className="mt-3 text-balance text-3xl font-semibold tracking-[-0.035em] text-white sm:text-4xl"
           >
-            Why Choose OmniTools?
+            Why Choose DextroKit?
           </h2>
           <p className="mt-4 max-w-xl text-sm leading-7 text-zinc-500">
             Built for fast results and sensitive files. You keep full control

@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "/tools/video-converter" },
   openGraph: {
-    title: "Video Converter & Compressor — OmniTools",
+    title: "Video Converter & Compressor — DextroKit",
     description:
       "Change video format and cut file size with no quotas, straight from your browser.",
     type: "website",

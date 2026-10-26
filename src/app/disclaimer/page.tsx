@@ -4,7 +4,7 @@ import { LegalPage } from "@/components/LegalPage";
 export const metadata: Metadata = {
   title: "Disclaimer",
   description:
-    "Important information about the limits, processing results, and responsibilities of using OmniTools.",
+    "Important information about the limits, processing results, and responsibilities of using DextroKit.",
   alternates: { canonical: "/disclaimer" },
 };
 
@@ -13,13 +13,13 @@ export default function DisclaimerPage() {
     <LegalPage
       badge="Disclaimer"
       title="Use it deliberately. Keep a backup of your files."
-      description="OmniTools aims to be fast and dependable, but processing results can vary with the file, format, device, and browser you use."
+      description="DextroKit aims to be fast and dependable, but processing results can vary with the file, format, device, and browser you use."
       updatedAt="October 22, 2026"
       sections={[
         {
           heading: "1. General information",
           paragraphs: [
-            "All content and tools on OmniTools are provided for general informational purposes. We do not guarantee that any processing result will be accurate, complete, or suitable for your specific requirements.",
+            "All content and tools on DextroKit are provided for general informational purposes. We do not guarantee that any processing result will be accurate, complete, or suitable for your specific requirements.",
           ],
         },
         {
@@ -53,13 +53,13 @@ export default function DisclaimerPage() {
         {
           heading: "6. Not professional advice",
           paragraphs: [
-            "Information on OmniTools is not legal, financial, medical, or other professional advice. Consult a qualified professional before making important decisions.",
+            "Information on DextroKit is not legal, financial, medical, or other professional advice. Consult a qualified professional before making important decisions.",
           ],
         },
         {
           heading: "7. Acceptance of risk",
           paragraphs: [
-            "By using OmniTools, you understand and accept that your use of the service, and any risk associated with it, is entirely your responsibility.",
+            "By using DextroKit, you understand and accept that your use of the service, and any risk associated with it, is entirely your responsibility.",
           ],
         },
       ]}

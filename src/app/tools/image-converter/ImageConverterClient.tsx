@@ -46,11 +46,11 @@ interface QueueItem {
 const FAQ_ITEMS = [
   {
     q: "Are my photos uploaded to the internet, or do they stay on my device?",
-    a: "They stay on your device. Unlike other online converters that send your files to third-party cloud servers, OmniTools processes every conversion inside your browser using HTML5 Canvas and WebAssembly. Private photos, ID cards, and confidential images never leave your browser's memory.",
+    a: "They stay on your device. Unlike other online converters that send your files to third-party cloud servers, DextroKit processes every conversion inside your browser using HTML5 Canvas and WebAssembly. Private photos, ID cards, and confidential images never leave your browser's memory.",
   },
   {
     q: "Can I convert HEIC photos from my iPhone?",
-    a: "Yes. iPhone cameras save photos as high-resolution HEIC/HEIF files by default. OmniTools decodes HEIC directly in your browser and converts .heic files to JPG, PNG, or WebP that you can open on Windows, Android, and the web.",
+    a: "Yes. iPhone cameras save photos as high-resolution HEIC/HEIF files by default. DextroKit decodes HEIC directly in your browser and converts .heic files to JPG, PNG, or WebP that you can open on Windows, Android, and the web.",
   },
   {
     q: "How many images can I convert at once?",
@@ -320,7 +320,7 @@ export function ImageConverterClient() {
       const downloadUrl = URL.createObjectURL(zipBlob);
       const a = document.createElement("a");
       a.href = downloadUrl;
-      a.download = `omnitools-converted-images-${Date.now()}.zip`;
+      a.download = `dextrokit-converted-images-${Date.now()}.zip`;
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
@@ -692,10 +692,10 @@ export function ImageConverterClient() {
               </div>
 
               <h2 className="mt-4 text-2xl font-bold tracking-tight text-white sm:text-3xl">
-                How to Convert Image Formats in OmniTools
+                How to Convert Image Formats in DextroKit
               </h2>
               <p className="mt-3 text-sm leading-relaxed text-zinc-400 sm:text-base">
-                The OmniTools Image Converter makes professional-quality image
+                The DextroKit Image Converter makes professional-quality image
                 conversion effortless. No heavy software like Photoshop required,
                 and no account needed. Here&apos;s how it works:
               </p>
@@ -750,7 +750,7 @@ export function ImageConverterClient() {
                   statements, or private family photos.
                 </p>
                 <p>
-                  At <strong className="text-white">OmniTools</strong>, everything runs
+                  At <strong className="text-white">DextroKit</strong>, everything runs
                   on a <em className="text-zinc-200">Zero Server Storage</em> architecture.
                   JavaScript and WebAssembly read your files directly from your
                   device&apos;s RAM, render them on an internal browser canvas, and export

@@ -2,8 +2,8 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "OmniTools — All-in-One Free Web Utilities",
-    short_name: "OmniTools",
+    name: "DextroKit — All-in-One Free Web Utilities",
+    short_name: "DextroKit",
     description:
       "Free browser-based tools to convert images, remove backgrounds, compress video, extract audio, merge PDFs, and design QR codes. 100% private.",
     start_url: "/",

@@ -1,4 +1,4 @@
-# OmniTools
+# DextroKit
 
 A privacy-first platform of browser-based file utilities built with **Next.js 15 (App Router)**,
 **React 19**, **TypeScript**, and **Tailwind CSS v4**.
@@ -34,7 +34,7 @@ npm run lint     # ESLint (next/core-web-vitals + next/typescript)
 
 | Variable | Purpose | Default |
 | --- | --- | --- |
-| `NEXT_PUBLIC_SITE_URL` | Canonical origin used for metadata, `sitemap.xml`, and `robots.txt` | `https://omni-tools.vercel.app` |
+| `NEXT_PUBLIC_SITE_URL` | Canonical origin used for metadata, `sitemap.xml`, and `robots.txt` | `https://dextrokit.vercel.app` |
 | `INPAINT_PYTHON_BIN` | Python 3 interpreter used by the LaMa endpoint | `python` (Windows) / `python3` |
 
 The AI inpainting endpoint additionally needs `scripts/inpaint_lama.py` plus
