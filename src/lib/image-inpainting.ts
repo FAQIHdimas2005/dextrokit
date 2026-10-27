@@ -8,18 +8,27 @@ export interface InpaintProgressCallback {
   (progress: number, status: string): void;
 }
 
+export interface InpaintImageDataLike {
+  data: Uint8ClampedArray;
+  width: number;
+  height: number;
+}
+
 export async function inpaintImageData(
-  source: ImageData,
+  source: InpaintImageDataLike,
   mask: Uint8Array, // 1 = area to remove, 0 = original image
   width: number,
   height: number,
   onProgress?: InpaintProgressCallback
-): Promise<ImageData> {
-  const result = new ImageData(
-    new Uint8ClampedArray(source.data),
-    width,
-    height
-  );
+): Promise<InpaintImageDataLike> {
+  const result: InpaintImageDataLike =
+    typeof ImageData !== "undefined"
+      ? new ImageData(new Uint8ClampedArray(source.data), width, height)
+      : {
+          data: new Uint8ClampedArray(source.data),
+          width,
+          height,
+        };
 
   const data = result.data;
   const totalPixels = width * height;
