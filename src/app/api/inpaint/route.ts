@@ -308,7 +308,7 @@ export async function POST(req: NextRequest) {
   // Random, unguessable job directory. No client-supplied filename is ever used
   // on disk, so path traversal is structurally impossible; the prefix assertion
   // below is an additional invariant check.
-  const tempRoot = path.join(os.tmpdir(), "omni-inpaint");
+  const tempRoot = path.join(os.tmpdir(), "dextrokit-inpaint");
   const jobDir = path.join(tempRoot, randomUUID());
   const resolvedRoot = path.resolve(tempRoot);
   const resolvedJob = path.resolve(jobDir);

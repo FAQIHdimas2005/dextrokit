@@ -86,11 +86,12 @@ export function checkRateLimit(
  * is abuse mitigation, never an authorization boundary.
  */
 export function getClientIp(request: Request): string {
-  const forwarded = request.headers.get("x-forwarded-for");
+  // Edge-verified proxy headers (Cloudflare, Vercel) are trusted over client-supplied XFF
   const candidate =
-    forwarded?.split(",")[0]?.trim() ||
-    request.headers.get("x-real-ip")?.trim() ||
     request.headers.get("cf-connecting-ip")?.trim() ||
+    request.headers.get("x-real-ip")?.trim() ||
+    request.headers.get("x-vercel-forwarded-for")?.split(",")[0]?.trim() ||
+    request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
     "";
 
   if (!candidate) return "unknown";
