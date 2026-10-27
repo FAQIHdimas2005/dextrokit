@@ -8,13 +8,13 @@ export interface InpaintProgressCallback {
   (progress: number, status: string): void;
 }
 
-export function inpaintImageData(
+export async function inpaintImageData(
   source: ImageData,
   mask: Uint8Array, // 1 = area to remove, 0 = original image
   width: number,
   height: number,
   onProgress?: InpaintProgressCallback
-): ImageData {
+): Promise<ImageData> {
   const result = new ImageData(
     new Uint8ClampedArray(source.data),
     width,
@@ -37,6 +37,7 @@ export function inpaintImageData(
   if (onProgress) {
     onProgress(15, "Analyzing the watermark area and surrounding texture...");
   }
+  await new Promise((resolve) => setTimeout(resolve, 0));
 
   // Pixel status: 0 = KNOWN (clean), 1 = BAND (edge), 2 = INSIDE (watermark center)
   const status = new Uint8Array(totalPixels);
@@ -78,6 +79,7 @@ export function inpaintImageData(
   if (onProgress) {
     onProgress(35, "Filling watermark pixels with surrounding colors...");
   }
+  await new Promise((resolve) => setTimeout(resolve, 0));
 
   // Iterative inpainting: flow color from the outside in
   const kernelRadius = 4;
@@ -157,9 +159,13 @@ export function inpaintImageData(
 
     currentBand = nextBand;
 
-    if (onProgress && pass % 5 === 0) {
-      const pct = Math.min(85, 35 + Math.round((processedInMask / maskCount) * 50));
-      onProgress(pct, `Smoothing the watermark area (pass ${pass})...`);
+    if (pass % 5 === 0) {
+      if (onProgress) {
+        const pct = Math.min(85, 35 + Math.round((processedInMask / Math.max(1, maskCount)) * 50));
+        onProgress(pct, `Smoothing the watermark area (pass ${pass})...`);
+      }
+      // Yield to the browser event loop to keep UI smooth and prevent freezing
+      await new Promise((resolve) => setTimeout(resolve, 0));
     }
   }
 
@@ -168,6 +174,7 @@ export function inpaintImageData(
   if (onProgress) {
     onProgress(90, "Blending the final texture...");
   }
+  await new Promise((resolve) => setTimeout(resolve, 0));
 
   const smoothData = new Uint8ClampedArray(data);
   for (let y = 1; y < height - 1; y++) {

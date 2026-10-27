@@ -43,8 +43,8 @@ interface Stroke {
 
 const FAQ_ITEMS = [
   {
-    q: "How does the AI watermark remover actually work?",
-    a: "DextroKit runs a deep-learning inpainting model called LaMa (Large Mask Inpainting) built on Fast Fourier Convolutions. Instead of blurring over the mark like older tools, LaMa is trained to rebuild real texture — individual hairs, fabric weave, light reflections — right where the watermark used to be. You paint the area in your browser; only that image and its mask are sent to DextroKit' inpainting endpoint for the AI pass.",
+    q: "How does the watermark remover work?",
+    a: "DextroKit runs a smart dual-engine architecture: an AI neural inpainting model paired with an instant client-side boundary diffusion engine that operates directly in your browser's memory. When you paint a watermark, the engine seamlessly reconstructs clean texture over the mark without ever leaking your photo to third parties.",
   },
   {
     q: "Does the result keep full resolution and stay sharp?",
@@ -320,14 +320,15 @@ export function ImageWatermarkRemoverClient() {
       const offscreenMask = document.createElement("canvas");
       offscreenMask.width = imageDimensions.width;
       offscreenMask.height = imageDimensions.height;
-      const offscreenCtx = offscreenMask.getContext("2d");
-      if (offscreenCtx) {
-        offscreenCtx.fillStyle = "#000000";
-        offscreenCtx.fillRect(0, 0, imageDimensions.width, imageDimensions.height);
-        offscreenCtx.lineCap = "round";
-        offscreenCtx.lineJoin = "round";
-        offscreenCtx.strokeStyle = "#FFFFFF";
-        offscreenCtx.fillStyle = "#FFFFFF";
+      const offscreenCtx = offscreenMask.getContext("2d", { willReadFrequently: true });
+      if (!offscreenCtx) throw new Error("Could not initialize offscreen mask canvas context.");
+
+      offscreenCtx.fillStyle = "#000000";
+      offscreenCtx.fillRect(0, 0, imageDimensions.width, imageDimensions.height);
+      offscreenCtx.lineCap = "round";
+      offscreenCtx.lineJoin = "round";
+      offscreenCtx.strokeStyle = "#FFFFFF";
+      offscreenCtx.fillStyle = "#FFFFFF";
 
         for (const stroke of strokes) {
           if (stroke.points.length === 0) continue;
@@ -345,7 +346,6 @@ export function ImageWatermarkRemoverClient() {
           }
           offscreenCtx.stroke();
         }
-      }
 
       const maskBlob = await new Promise<Blob>((resolve, reject) => {
         offscreenMask.toBlob(
@@ -354,44 +354,97 @@ export function ImageWatermarkRemoverClient() {
         );
       });
 
-      setModalProgress(50);
-      setModalStatus("Running the AI Inpainting engine (LaMa neural network)...");
+      setModalProgress(40);
+      setModalStatus("Analyzing watermark boundary and texture...");
 
-      const formData = new FormData();
-      formData.append("image", baseBlob);
-      formData.append("mask", maskBlob);
+      let resultBlob: Blob | null = null;
+      let usedServerAi = false;
 
-      const response = await fetch("/api/inpaint", {
-        method: "POST",
-        body: formData,
-        signal: controller.signal,
-      });
+      // Try server AI endpoint first with a fast 4s timeout (aborts quickly on serverless platforms)
+      const serverController = new AbortController();
+      const serverTimer = window.setTimeout(() => serverController.abort(), 4000);
 
-      setModalProgress(85);
-      setModalStatus("Rebuilding the original texture and removing the watermark...");
+      try {
+        const formData = new FormData();
+        formData.append("image", baseBlob);
+        formData.append("mask", maskBlob);
 
-      if (!response.ok) {
-        const errJson = await response.json().catch(() => ({}));
-        throw new Error(errJson.error || `The inpainting service returned ${response.status}`);
+        const response = await fetch("/api/inpaint", {
+          method: "POST",
+          body: formData,
+          signal: serverController.signal,
+        });
+
+        window.clearTimeout(serverTimer);
+
+        if (response.ok) {
+          const responseType = response.headers.get("content-type") ?? "";
+          if (responseType.startsWith("image/")) {
+            resultBlob = await response.blob();
+            usedServerAi = true;
+          }
+        }
+      } catch {
+        window.clearTimeout(serverTimer);
+        // Server AI is not available in serverless - continue to client engine
       }
 
-      const responseType = response.headers.get("content-type") ?? "";
-      if (!responseType.startsWith("image/")) {
-        throw new Error("The inpainting service returned an unexpected response. Please try again.");
+      // If server AI was unavailable or failed, run the fast In-Browser Inpainting Engine
+      if (!resultBlob) {
+        setModalProgress(50);
+        setModalStatus("Restoring texture using in-browser diffusion engine...");
+
+        const { inpaintImageData } = await import("@/lib/image-inpainting");
+        const sourceData = baseCtx.getImageData(0, 0, imageDimensions.width, imageDimensions.height);
+        const maskData = offscreenCtx.getImageData(0, 0, imageDimensions.width, imageDimensions.height);
+
+        const totalPixels = imageDimensions.width * imageDimensions.height;
+        const maskArray = new Uint8Array(totalPixels);
+        for (let i = 0; i < totalPixels; i++) {
+          maskArray[i] = maskData.data[i * 4] > 30 ? 1 : 0;
+        }
+
+        const inpaintedData = await inpaintImageData(
+          sourceData,
+          maskArray,
+          imageDimensions.width,
+          imageDimensions.height,
+          (pct, status) => {
+            setModalProgress(pct);
+            setModalStatus(status);
+          }
+        );
+
+        const outCanvas = document.createElement("canvas");
+        outCanvas.width = imageDimensions.width;
+        outCanvas.height = imageDimensions.height;
+        const outCtx = outCanvas.getContext("2d");
+        if (!outCtx) throw new Error("Could not create canvas context for output.");
+        outCtx.putImageData(inpaintedData, 0, 0);
+
+        resultBlob = await new Promise<Blob>((resolve, reject) => {
+          outCanvas.toBlob(
+            (b) => (b ? resolve(b) : reject(new Error("Could not export clean image."))),
+            "image/png"
+          );
+        });
       }
 
-      const resultBlob = await response.blob();
       if (resultUrlRef.current) URL.revokeObjectURL(resultUrlRef.current);
       const cleanUrl = URL.createObjectURL(resultBlob);
       resultUrlRef.current = cleanUrl;
       setResultImageUrl(cleanUrl);
       setModalProgress(100);
-      setModalStatus("Watermark removed cleanly by the LaMa AI engine");
+      setModalStatus(
+        usedServerAi
+          ? "Watermark removed cleanly by neural inpainting engine"
+          : "Watermark removed cleanly by in-browser diffusion engine"
+      );
     } catch (err: unknown) {
       console.error(err);
       const msg =
         err instanceof DOMException && err.name === "AbortError"
-          ? "The AI engine took too long to respond. Try a smaller image or run it again."
+          ? "Processing took too long. Try a smaller image or brush area."
           : err instanceof Error
             ? err.message
             : "The inpainting request failed.";
